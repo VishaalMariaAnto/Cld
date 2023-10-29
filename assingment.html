@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+  /* Animation to rainfall */
+  .rain-container {
+    position: relative;
+    width: 1px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .rain {
+    width: 10px;
+    height: 10px;
+    background-color: rgb(2, 134, 210);
+    animation: fall linear infinite;
+  }
+  .rain:nth-child(odd) {
+    animation-duration: 0.8s;
+  }
+  .rain:nth-child(even) {
+    animation-duration: 0.6s;
+  }
+  @keyframes fall {
+    to {
+      transform: translateY(100vh);
+    }
+  }
+  /* Tranformation of a box to change its colour */
+  .transform-box {
+    background-color: #3498db;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+  .transformed {
+    width: 200px;
+    height: 200px;
+    background-color: #8638d8;
+    line-height: 200px;
+  }
+/* transition of a box to hover */
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: #0a3b5c;
+    transition: transform 0.3s ease-in-out;
+  }
+  .box:hover {
+    transform: scale(1.2) rotate(45deg);
+  }
+</style>
+<title>Rain Animation</title>
+</head>
+<body>
+  <div class="rain-container">
+    <div class="rain"></div>
+    <div class="rain"></div>
+    <div class="rain"></div>
+  </div>
+  <div class="transform-box"></div>
+  <div class="box"></div>
+  <div class="transform-box" id="button" onclick="transformElement()">Click</div>
+  <script>
+    function transformElement() {
+      const button = document.getElementById('button');
+      button.classList.toggle('transformed');
+    }
+  </script>
+</body>
+</html>
+
